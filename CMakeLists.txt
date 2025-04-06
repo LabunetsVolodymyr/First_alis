@@ -1,8 +1,15 @@
 cmake_minimum_required(VERSION 3.29)
+project(First_alis)
 
-project(untitled1)
+set(CMAKE_CXX_STANDARD 14)
 
-set(CMAKE_CXX_STANDARD 17)
+include_directories(.)
 
-add_executable(untitled1 main.cpp Film.cpp Director.cpp Studio.cpp)
-cmake_minimum_required(VERSION 3.16)
+
+add_executable(new_target Director.cpp
+        Director.h
+        Film.cpp
+        Film.h
+        Studio.h
+        Studio.cpp
+        main.cpp)

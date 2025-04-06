@@ -1,0 +1,7 @@
+# ninja log v6
+1	251	7656452145633832	build.ninja	693ca331988af2a
+20	261	7656452146510166	CMakeFiles/new_target.dir/Film.cpp.obj	53a482d4d5dd3cb9
+24	276	7656452146550166	CMakeFiles/new_target.dir/main.cpp.obj	2defd4bd0176af1a
+22	307	7656452146530163	CMakeFiles/new_target.dir/Studio.cpp.obj	3f198367515b5b3d
+18	321	7656452146480216	CMakeFiles/new_target.dir/Director.cpp.obj	1d091d556969c3a
+321	396	7656452149515900	new_target.exe	1931aa47b6ef02c5
