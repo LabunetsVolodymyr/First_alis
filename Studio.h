@@ -5,23 +5,19 @@
 #ifndef STUDIO_H
 #define STUDIO_H
 
-#include <iostream>
 #include <vector>
+#include "Entity.h"
 #include "Film.h"
 
-class Studio {
+class Studio : public Entity {
 private:
-    std::string name;
     int yearFounded;
     std::vector<Film*> films;
-
 public:
-    Studio();
-    Studio(std::string n, int y);
+    Studio(const std::string& name = "Unknown Studio", int year = 1900);
     Studio(const Studio& other);
     Studio(Studio&& other) noexcept;
     ~Studio();
-
     void addFilm(Film* f);
     void display() const;
 };

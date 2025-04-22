@@ -6,44 +6,45 @@
 
 int Film::filmCount = 0;
 
-
-Film::Film() : title("Unknown"), genre("Unknown"), year(0), rating(0.0) {
+Film::Film() : Entity("Unknown"), genre("Unknown"), year(0), rating(0.0) {
     filmCount++;
 }
 
 Film::Film(std::string t, std::string g, int y, double r)
-    : title(t), genre(g), year(y), rating(r) {
+    : Entity(t), genre(g), year(y), rating(r) {
     filmCount++;
 }
 
-Film::Film(std::string t, std::string g) : Film(t, g, 2000, 5.0) {}
+Film::Film(std::string t, std::string g)
+    : Film(t, g, 2000, 5.0) {}
 
 Film::Film(const Film& other)
-    : title(other.title), genre(other.genre), year(other.year), rating(other.rating) {
+    : Entity(other.name), genre(other.genre), year(other.year), rating(other.rating) {
     filmCount++;
 }
 
 Film::Film(Film&& other) noexcept
-    : title(std::move(other.title)), genre(std::move(other.genre)),
-      year(other.year), rating(other.rating) {
+    : Entity(std::move(other.name)), genre(std::move(other.genre)), year(other.year), rating(other.rating) {
     other.year = 0;
     other.rating = 0.0;
 }
 
 Film::~Film() {
     filmCount--;
-    std::cout << "Film \"" << title << "\" has been deleted.\n";
+    std::cout << "Film \"" << name << "\" has been deleted.\n";
 }
 
+std::string Film::getGenre() const { return genre; }
+int Film::getYear() const { return year; }
+double Film::getRating() const { return rating; }
 
 Film Film::operator+(const Film& other) const {
-    return Film(title + " & " + other.title, genre, (year + other.year) / 2, (rating + other.rating) / 2);
+    return Film(name + " & " + other.name, genre, (year + other.year) / 2, (rating + other.rating) / 2);
 }
-
 
 Film& Film::operator=(const Film& other) {
     if (this != &other) {
-        title = other.title;
+        name = other.name;
         genre = other.genre;
         year = other.year;
         rating = other.rating;
@@ -56,18 +57,21 @@ bool Film::operator!() const {
 }
 
 void Film::display() const {
-    std::cout << "Title: " << this->title << ", Genre: " << this->genre
-              << ", Year: " << this->year << ", Rating: " << this->rating << std::endl;
+    std::cout << "Title: " << name << ", Genre: " << genre << ", Year: " << year << ", Rating: " << rating << std::endl;
+}
+
+int Film::getFilmCount() {
+    return filmCount;
 }
 
 std::ostream& operator<<(std::ostream& os, const Film& f) {
-    os << f.title << " (" << f.year << ") - " << f.genre << ", Rating: " << f.rating;
+    os << f.name << " (" << f.year << ") - " << f.genre << ", Rating: " << f.rating;
     return os;
 }
 
 std::istream& operator>>(std::istream& is, Film& f) {
     std::cout << "Enter title: ";
-    is >> f.title;
+    is >> f.name;
     std::cout << "Enter genre: ";
     is >> f.genre;
     std::cout << "Enter year: ";
@@ -75,9 +79,4 @@ std::istream& operator>>(std::istream& is, Film& f) {
     std::cout << "Enter rating: ";
     is >> f.rating;
     return is;
-}
-
-
-int Film::getFilmCount() {
-    return filmCount;
 }

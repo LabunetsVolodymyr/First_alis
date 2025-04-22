@@ -77,6 +77,13 @@ build CMakeFiles/new_target.dir/main.cpp.obj: CXX_COMPILER__new_target_unscanned
   OBJECT_DIR = CMakeFiles\new_target.dir
   OBJECT_FILE_DIR = CMakeFiles\new_target.dir
 
+build CMakeFiles/new_target.dir/Entity.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/Vova/firm_alo/First_alis/Entity.cpp || cmake_object_order_depends_target_new_target
+  DEP_FILE = CMakeFiles\new_target.dir\Entity.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/Vova/firm_alo/First_alis/.
+  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\new_target.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target new_target
@@ -85,7 +92,7 @@ build CMakeFiles/new_target.dir/main.cpp.obj: CXX_COMPILER__new_target_unscanned
 #############################################
 # Link the executable new_target.exe
 
-build new_target.exe: CXX_EXECUTABLE_LINKER__new_target_Debug CMakeFiles/new_target.dir/Director.cpp.obj CMakeFiles/new_target.dir/Film.cpp.obj CMakeFiles/new_target.dir/Studio.cpp.obj CMakeFiles/new_target.dir/main.cpp.obj
+build new_target.exe: CXX_EXECUTABLE_LINKER__new_target_Debug CMakeFiles/new_target.dir/Director.cpp.obj CMakeFiles/new_target.dir/Film.cpp.obj CMakeFiles/new_target.dir/Studio.cpp.obj CMakeFiles/new_target.dir/main.cpp.obj CMakeFiles/new_target.dir/Entity.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\new_target.dir

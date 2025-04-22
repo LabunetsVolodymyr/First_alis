@@ -12,4 +12,7 @@ add_executable(new_target Director.cpp
         Film.h
         Studio.h
         Studio.cpp
-        main.cpp)
+        main.cpp
+        Entity.h
+        Entity.cpp
+        Person.h)
