@@ -4,7 +4,6 @@
 
 #ifndef PERSON_H
 #define PERSON_H
-
 #include "Entity.h"
 
 class Person : public Entity {

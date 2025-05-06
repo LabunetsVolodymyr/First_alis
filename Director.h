@@ -4,7 +4,6 @@
 
 #ifndef DIRECTOR_H
 #define DIRECTOR_H
-
 #include <vector>
 #include "Person.h"
 #include "Film.h"

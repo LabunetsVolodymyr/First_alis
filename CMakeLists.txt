@@ -15,4 +15,5 @@ add_executable(new_target Director.cpp
         main.cpp
         Entity.h
         Entity.cpp
-        Person.h)
+        Person.h
+        Person.cpp)

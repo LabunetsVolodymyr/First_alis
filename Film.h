@@ -4,7 +4,6 @@
 
 #ifndef FILM_H
 #define FILM_H
-
 #include <iostream>
 #include <string>
 #include "Entity.h"
@@ -22,7 +21,6 @@ public:
     Film(const Film& other);
     Film(Film&& other) noexcept;
     ~Film();
-
     std::string getGenre() const;
     int getYear() const;
     double getRating() const;

@@ -4,7 +4,6 @@
 
 #ifndef STUDIO_H
 #define STUDIO_H
-
 #include <vector>
 #include "Entity.h"
 #include "Film.h"
