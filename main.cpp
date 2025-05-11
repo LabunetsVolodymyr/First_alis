@@ -2,9 +2,7 @@
 #include "Director.h"
 #include "Studio.h"
 
-
 int main() {
-
     Film* film1 = new Film("Interstellar", "Sci-Fi", 2014, 8.6);
     Film* film2 = new Film("Inception", "Sci-Fi", 2010, 8.8);
 
@@ -46,4 +44,3 @@ int main() {
 
     return 0;
 }
-
