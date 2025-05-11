@@ -11,7 +11,8 @@ protected:
     std::string name;
 public:
     Entity(const std::string& name = "Unknown") : name(name) {}
-    virtual ~Entity() {}
+    ~Entity() {}
     std::string getName() const { return name; }
 };
+
 #endif //ENTITY_H
