@@ -3,7 +3,6 @@
 //
 
 #include "Film.h"
-
 int Film::filmCount = 0;
 
 Film::Film() : Entity("Unknown"), genre("Unknown"), year(0), rating(0.0) {
