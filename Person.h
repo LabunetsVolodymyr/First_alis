@@ -12,8 +12,8 @@ protected:
 public:
     Person(const std::string& name = "Unknown", const std::string& birthdate = "01.01.1970")
         : Entity(name), birthdate(birthdate) {}
-    virtual ~Person() {}
+    ~Person() {}
     std::string getBirthdate() const { return birthdate; }
 };
 
-#endif //PERSON_H
+#endif // PERSON_H
