@@ -1,5 +1,5 @@
 //
-// Created by Vova on 18.05.2025.
+// Created by Vova on 01.04.2025.
 //
 
 #ifndef FEATUREFILM_H
@@ -8,11 +8,17 @@
 #include "Film.h"
 
 class FeatureFilm : public Film {
-public:
-    FeatureFilm(const char* t, int y, float r,
-                const Director& d = Director(), const Studio& s = Studio());
+private:
+    int duration;
 
-    void show() const override;
+public:
+    FeatureFilm(std::string t, int y, double r, std::shared_ptr<Director> d, std::vector<std::shared_ptr<Actor>> a, int dur);
+    FeatureFilm(const FeatureFilm& other);
+    FeatureFilm(FeatureFilm&& other) noexcept;
+    FeatureFilm& operator=(const FeatureFilm& other);
+    ~FeatureFilm();
+
+    void showInfo() const;
 };
 
 #endif //FEATUREFILM_H

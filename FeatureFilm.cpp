@@ -1,15 +1,32 @@
 //
-// Created by Vova on 18.05.2025.
+// Created by Vova on 01.04.2025.
 //
 
 #include "FeatureFilm.h"
 #include <iostream>
 
-FeatureFilm::FeatureFilm(const char* t, int y, float r,
-                         const Director& d, const Studio& s)
-    : Film(t, y, r, d, s) {}
+FeatureFilm::FeatureFilm(std::string t, int y, double r, std::shared_ptr<Director> d, std::vector<std::shared_ptr<Actor>> a, int dur)
+    : Film(t, y, r, d, a), duration(dur) {}
 
-void FeatureFilm::show() const {
-    cout << "[Feature Film] ";
-    Film::show();
+FeatureFilm::FeatureFilm(const FeatureFilm& other)
+    : Film(other), duration(other.duration) {}
+
+FeatureFilm::FeatureFilm(FeatureFilm&& other) noexcept
+    : Film(std::move(other)), duration(other.duration) {
+    other.duration = 0;
+}
+
+FeatureFilm& FeatureFilm::operator=(const FeatureFilm& other) {
+    if (this != &other) {
+        Film::operator=(other);
+        duration = other.duration;
+    }
+    return *this;
+}
+
+FeatureFilm::~FeatureFilm() {}
+
+void FeatureFilm::showInfo() const {
+    Film::showInfo();
+    std::cout << "Duration: " << duration << " minutes" << std::endl;
 }
