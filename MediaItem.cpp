@@ -1,32 +1,15 @@
 //
-// Created by Vova on 18.05.2025.
+// Created by Vova on 01.04.2025.
 //
 
 #include "MediaItem.h"
-#include <cstring>
+#include <iostream>
 
-MediaItem::MediaItem(const char* t, int y) : year(y) {
-    strncpy(title, t, sizeof(title) - 1);
-    title[sizeof(title) - 1] = '\0';
-}
-
-MediaItem::MediaItem(const MediaItem& other) : year(other.year) {
-    strncpy(title, other.title, sizeof(title));
-}
-
-MediaItem& MediaItem::operator=(const MediaItem& other) {
-    if (this != &other) {
-        strncpy(title, other.title, sizeof(title));
-        year = other.year;
-    }
-    return *this;
-}
-
+MediaItem::MediaItem() : title("Untitled"), releaseYear(2000) {}
+MediaItem::MediaItem(std::string t, int y) : title(t), releaseYear(y) {}
 MediaItem::~MediaItem() {
-    cout << "Destroying MediaItem: " << title << endl;
+    std::cout << "MediaItem \"" << title << "\" destroyed\n";
 }
-
-void MediaItem::show() const {
-    cout << "Title: " << title << ", Year: " << year << endl;
+void MediaItem::showInfo() const {
+    std::cout << "Media Title: " << title << ", Year: " << releaseYear << std::endl;
 }
-
