@@ -4,33 +4,27 @@
 
 #ifndef FILM_H
 #define FILM_H
-#include <iostream>
-#include <string>
-#include "Entity.h"
 
-class Film : public Entity {
-private:
-    std::string genre;
-    int year;
-    double rating;
-    static int filmCount;
+#include "MediaItem.h"
+#include "Director.h"
+#include "Studio.h"
+
+class Film : public MediaItem {
+protected:
+    float rating;
+    Director director;
+    Studio studio;
+
 public:
-    Film();
-    Film(std::string t, std::string g, int y, double r);
-    Film(std::string t, std::string g);
+    Film(const char* t = "Untitled", int y = 2000, float r = 0.0f,
+         const Director& d = Director(), const Studio& s = Studio());
+
     Film(const Film& other);
     Film(Film&& other) noexcept;
-    ~Film();
-    std::string getGenre() const;
-    int getYear() const;
-    double getRating() const;
-    Film operator+(const Film& other) const;
     Film& operator=(const Film& other);
-    bool operator!() const;
-    void display() const;
-    static int getFilmCount();
-    friend std::ostream& operator<<(std::ostream& os, const Film& f);
-    friend std::istream& operator>>(std::istream& is, Film& f);
-};
 
-#endif // FILM_H
+    ~Film();
+
+    void show() const override;
+};
+#endif// FILM_H
