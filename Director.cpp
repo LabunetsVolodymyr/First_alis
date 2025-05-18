@@ -5,23 +5,12 @@
 #include "Director.h"
 #include <iostream>
 
-Director::Director(const char* n, int y) : Person(n), birthYear(y) {}
-
-Director::Director(const Director& other) : Person(other), birthYear(other.birthYear) {}
-
-Director& Director::operator=(const Director& other) {
-    if (this != &other) {
-        Person::operator=(other);
-        birthYear = other.birthYear;
-    }
-    return *this;
-}
-
+Director::Director() : name("Unnamed"), experience(0) {}
+Director::Director(std::string n, int exp) : name(n), experience(exp) {}
+Director::Director(std::string n) : Director(n, 5) {}
 Director::~Director() {
-    cout << "Destroying Director: " << name << endl;
+    std::cout << "Director \"" << name << "\" deleted\n";
 }
-
-void Director::show() const {
-    cout << "Director: " << name << ", Born: " << birthYear << endl;
+void Director::showInfo() const {
+    std::cout << "Director: " << name << ", Experience: " << experience << " years" << std::endl;
 }
-

@@ -5,17 +5,20 @@
 #ifndef DIRECTOR_H
 #define DIRECTOR_H
 
-#include "Person.h"
+#include <string>
 
-class Director : public Person {
-    int birthYear;
+class Director {
+private:
+    std::string name;
+    int experience;
 
 public:
-    Director(const char* n = "Unnamed", int y = 1900);
-    Director(const Director& other);
-    Director& operator=(const Director& other);
+    Director();
+    Director(std::string n, int exp);
+    Director(std::string n);
     ~Director();
 
-    void show() const override;
+    void showInfo() const;
 };
+
 #endif// DIRECTOR_H
