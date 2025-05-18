@@ -7,24 +7,24 @@
 
 #include "MediaItem.h"
 #include "Director.h"
-#include "Studio.h"
+#include "Actor.h"
+#include <vector>
+#include <memory>
 
 class Film : public MediaItem {
 protected:
-    float rating;
-    Director director;
-    Studio studio;
+    double imdbRating;
+    std::shared_ptr<Director> director;
+    std::vector<std::shared_ptr<Actor>> actors;
 
 public:
-    Film(const char* t = "Untitled", int y = 2000, float r = 0.0f,
-         const Director& d = Director(), const Studio& s = Studio());
-
-    Film(const Film& other);
-    Film(Film&& other) noexcept;
-    Film& operator=(const Film& other);
-
+    Film();
+    Film(std::string t, int y, double r, std::shared_ptr<Director> d, std::vector<std::shared_ptr<Actor>> a);
+    Film(std::string t);
     ~Film();
 
-    void show() const override;
+    void showInfo() const;
 };
+
+
 #endif// FILM_H

@@ -4,34 +4,24 @@
 
 
 #include "Film.h"
-#include <utility>
+#include <iostream>
 
-Film::Film(const char* t, int y, float r, const Director& d, const Studio& s)
-    : MediaItem(t, y), rating(r), director(d), studio(s) {}
+Film::Film() : MediaItem(), imdbRating(0.0), director(std::make_shared<Director>()), actors() {}
 
-Film::Film(const Film& other)
-    : MediaItem(other), rating(other.rating), director(other.director), studio(other.studio) {}
+Film::Film(std::string t, int y, double r, std::shared_ptr<Director> d, std::vector<std::shared_ptr<Actor>> a)
+    : MediaItem(t, y), imdbRating(r), director(d), actors(a) {}
 
-Film::Film(Film&& other) noexcept
-    : MediaItem(other), rating(other.rating), director(std::move(other.director)), studio(std::move(other.studio)) {}
-
-Film& Film::operator=(const Film& other) {
-    if (this != &other) {
-        MediaItem::operator=(other);
-        rating = other.rating;
-        director = other.director;
-        studio = other.studio;
-    }
-    return *this;
-}
+Film::Film(std::string t) : Film(t, 2024, 5.0, std::make_shared<Director>(), {}) {}
 
 Film::~Film() {
-    cout << "Destroying Film: " << title << endl;
+    std::cout << "Film \"" << title << "\" deleted\n";
 }
 
-void Film::show() const {
-    MediaItem::show();
-    cout << "Rating: " << rating << "/10" << endl;
-    director.show();
-    studio.show();
+void Film::showInfo() const {
+    MediaItem::showInfo();
+    std::cout << "IMDb Rating: " << imdbRating << std::endl;
+    director->showInfo();
+    for (const auto& actor : actors) {
+        actor->showInfo();
+    }
 }
