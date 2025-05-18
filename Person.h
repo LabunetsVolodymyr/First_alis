@@ -4,16 +4,20 @@
 
 #ifndef PERSON_H
 #define PERSON_H
-#include "Entity.h"
 
-class Person : public Entity {
+#include <iostream>
+using namespace std;
+
+class Person {
 protected:
-    std::string birthdate;
-public:
-    Person(const std::string& name = "Unknown", const std::string& birthdate = "01.01.1970")
-        : Entity(name), birthdate(birthdate) {}
-    ~Person() {}
-    std::string getBirthdate() const { return birthdate; }
-};
+    char name[50];
 
+public:
+    Person(const char* n = "Unnamed");
+    Person(const Person& other);
+    Person& operator=(const Person& other);
+    virtual ~Person();
+
+    virtual void show() const;
+};
 #endif // PERSON_H
