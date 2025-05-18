@@ -5,35 +5,23 @@
 #include "Director.h"
 #include <iostream>
 
-Director::Director(const std::string& name, const std::string& birthdate)
-    : Person(name, birthdate) {}
+Director::Director(const char* n, int y) : Person(n), birthYear(y) {}
 
-Director::Director(const Director& other)
-    : Person(other) {
-    for (const auto& film : other.films) {
-        films.push_back(new Film(*film));
+Director::Director(const Director& other) : Person(other), birthYear(other.birthYear) {}
+
+Director& Director::operator=(const Director& other) {
+    if (this != &other) {
+        Person::operator=(other);
+        birthYear = other.birthYear;
     }
-}
-
-Director::Director(Director&& other) noexcept
-    : Person(std::move(other)), films(std::move(other.films)) {
-    other.films.clear();
+    return *this;
 }
 
 Director::~Director() {
-    for (auto film : films) {
-        delete film;
-    }
-    std::cout << "Director " << name << " has been deleted.\n";
+    cout << "Destroying Director: " << name << endl;
 }
 
-void Director::addFilm(Film* f) {
-    films.push_back(f);
+void Director::show() const {
+    cout << "Director: " << name << ", Born: " << birthYear << endl;
 }
 
-void Director::display() const {
-    std::cout << "Director: " << name << ", Birthdate: " << birthdate << "\nFilms:\n";
-    for (const auto& film : films) {
-        film->display();
-    }
-}
