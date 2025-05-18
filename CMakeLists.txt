@@ -12,8 +12,12 @@ add_executable(new_target Director.cpp
         Film.h
         Studio.h
         Studio.cpp
-        main.cpp
-        Entity.h
-        Entity.cpp
         Person.h
-        Person.cpp)
+        Person.cpp
+        MediaItem.h
+        MediaItem.cpp
+        main.cpp
+        FeatureFilm.h
+        FeatureFilm.cpp
+        ShortFilm.h
+        ShortFilm.cpp)
