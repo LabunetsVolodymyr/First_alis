@@ -1,22 +1,21 @@
+#include <iostream>
 #include "FeatureFilm.h"
 #include "ShortFilm.h"
-#include "Director.h"
-#include "Studio.h"
 
 int main() {
-    Director d("Christopher Nolan", 1970);
-    Studio s("Warner Bros", "USA");
+    auto dir = std::make_shared<Director>("Christopher Nolan", 20);
 
-    FeatureFilm ff("Inception", 2010, 8.8, d, s);
-    ShortFilm sf("Paperman", 2012, 7.5, d, s);
+    std::vector<std::shared_ptr<Actor>> actors = {
+        std::make_shared<Actor>("Leonardo DiCaprio", 49),
+        std::make_shared<Actor>("Joseph Gordon-Levitt", 43)
+    };
 
-    ff.show();
-    cout << endl;
-    sf.show();
-    cout << endl;
+    FeatureFilm ff("Inception", 2010, 8.8, dir, actors, 148);
+    ShortFilm sf("Piper", 2016, 8.5, dir, { std::make_shared<Actor>("Piper the Bird") }, true);
 
-    d.show();
-    s.show();
+    ff.showInfo();
+    std::cout << std::endl;
+    sf.showInfo();
 
     return 0;
 }
