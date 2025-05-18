@@ -10,10 +10,8 @@ add_executable(new_target Director.cpp
         Director.h
         Film.cpp
         Film.h
-        Studio.h
-        Studio.cpp
-        Person.h
-        Person.cpp
+        Actor.h
+        Actor.cpp
         MediaItem.h
         MediaItem.cpp
         main.cpp
