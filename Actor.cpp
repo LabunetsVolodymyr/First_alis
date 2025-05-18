@@ -1,5 +1,17 @@
 //
-// Created by Vova on 18.05.2025.
+// Created by Vova on 10.03.2025.
 //
 
 #include "Actor.h"
+#include <iostream>
+
+Actor::Actor() : fullName("Unknown Actor"), age(30) {}
+Actor::Actor(std::string name, int age) : fullName(name), age(age) {}
+Actor::Actor(std::string name) : Actor(name, 35) {}
+Actor::~Actor() {
+    std::cout << "Actor \"" << fullName << "\" deleted\n";
+}
+void Actor::showInfo() const {
+    std::cout << "Actor: " << fullName << ", Age: " << age << std::endl;
+}
+
