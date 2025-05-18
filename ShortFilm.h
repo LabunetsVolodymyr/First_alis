@@ -1,5 +1,5 @@
 //
-// Created by Vova on 18.05.2025.
+// Created by Vova on 01.04.2025.
 //
 
 #ifndef SHORTFILM_H
@@ -8,11 +8,12 @@
 #include "Film.h"
 
 class ShortFilm : public Film {
-public:
-    ShortFilm(const char* t, int y, float r,
-              const Director& d = Director(), const Studio& s = Studio());
+private:
+    bool isAnimated;
 
-    void show() const override;
+public:
+    ShortFilm(std::string t, int y, double r, std::shared_ptr<Director> d, std::vector<std::shared_ptr<Actor>> a, bool anim);
+    void showInfo() const;
 };
 
 

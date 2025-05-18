@@ -1,15 +1,14 @@
 //
-// Created by Vova on 18.05.2025.
+// Created by Vova on 01.04.2025.
 //
 
 #include "ShortFilm.h"
 #include <iostream>
 
-ShortFilm::ShortFilm(const char* t, int y, float r,
-                     const Director& d, const Studio& s)
-    : Film(t, y, r, d, s) {}
+ShortFilm::ShortFilm(std::string t, int y, double r, std::shared_ptr<Director> d, std::vector<std::shared_ptr<Actor>> a, bool anim)
+    : Film(t, y, r, d, a), isAnimated(anim) {}
 
-void ShortFilm::show() const {
-    cout << "[Short Film] ";
-    Film::show();
+void ShortFilm::showInfo() const {
+    Film::showInfo();
+    std::cout << "Type: " << (isAnimated ? "Animated" : "Live Action") << std::endl;
 }
