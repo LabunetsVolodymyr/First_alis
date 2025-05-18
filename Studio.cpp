@@ -3,36 +3,33 @@
 //
 
 #include "Studio.h"
-#include <iostream>
+#include <cstring>
 
-Studio::Studio(const std::string& name, int year) : Entity(name), yearFounded(year) {}
+Studio::Studio(const char* n, const char* c) {
+    strncpy(name, n, sizeof(name) - 1);
+    name[sizeof(name) - 1] = '\0';
 
-Studio::Studio(const Studio& other)
-    : Entity(other), yearFounded(other.yearFounded) {
-    for (const auto& film : other.films) {
-        films.push_back(new Film(*film));
-    }
+    strncpy(country, c, sizeof(country) - 1);
+    country[sizeof(country) - 1] = '\0';
 }
 
-Studio::Studio(Studio&& other) noexcept
-    : Entity(std::move(other)), yearFounded(other.yearFounded), films(std::move(other.films)) {
-    other.films.clear();
+Studio::Studio(const Studio& other) {
+    strncpy(name, other.name, sizeof(name));
+    strncpy(country, other.country, sizeof(country));
+}
+
+Studio& Studio::operator=(const Studio& other) {
+    if (this != &other) {
+        strncpy(name, other.name, sizeof(name));
+        strncpy(country, other.country, sizeof(country));
+    }
+    return *this;
 }
 
 Studio::~Studio() {
-    for (auto film : films) {
-        delete film;
-    }
-    std::cout << "Studio " << name << " has been deleted.\n";
+    cout << "Destroying Studio: " << name << endl;
 }
 
-void Studio::addFilm(Film* f) {
-    films.push_back(f);
-}
-
-void Studio::display() const {
-    std::cout << "Studio: " << name << ", Founded in " << yearFounded << "\nFilms:\n";
-    for (const auto& film : films) {
-        film->display();
-    }
+void Studio::show() const {
+    cout << "Studio: " << name << ", Country: " << country << endl;
 }
