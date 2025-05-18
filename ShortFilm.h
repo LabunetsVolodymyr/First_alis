@@ -5,10 +5,14 @@
 #ifndef SHORTFILM_H
 #define SHORTFILM_H
 
+#include "Film.h"
 
+class ShortFilm : public Film {
+public:
+    ShortFilm(const char* t, int y, float r,
+              const Director& d = Director(), const Studio& s = Studio());
 
-class ShortFilm {
-
+    void show() const override;
 };
 
 
