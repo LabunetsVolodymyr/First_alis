@@ -23,4 +23,5 @@ public:
     virtual std::string getType() const = 0;
 };
 
+
 #endif //MEDIAITEM_H
