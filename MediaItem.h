@@ -6,17 +6,21 @@
 #define MEDIAITEM_H
 
 #include <string>
+#include <iostream>
 
 class MediaItem {
 protected:
     std::string title;
     int releaseYear;
+    double imdbRating;
 
 public:
     MediaItem();
-    MediaItem(std::string t, int y);
-    ~MediaItem();
-    void showInfo() const;
+    MediaItem(const std::string& t, int y, double r);
+    virtual ~MediaItem();
+
+    virtual void showInfo() const;
+    virtual std::string getType() const = 0;
 };
 
 #endif //MEDIAITEM_H

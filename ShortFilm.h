@@ -5,17 +5,21 @@
 #ifndef SHORTFILM_H
 #define SHORTFILM_H
 
-#include "Film.h"
+#include "MediaItem.h"
+#include <string>
 
-class ShortFilm : public Film {
+class ShortFilm : public MediaItem {
 private:
-    bool isAnimated;
+    std::string festival;
 
 public:
-    ShortFilm(std::string t, int y, double r, std::shared_ptr<Director> d, std::vector<std::shared_ptr<Actor>> a, bool anim);
-    void showInfo() const;
-};
+    ShortFilm();
+    ShortFilm(const std::string& t, int y, double r, const std::string& fest);
+    ~ShortFilm() override;
 
+    void showInfo() const override;
+    std::string getType() const override;
+};
 
 
 #endif //SHORTFILM_H

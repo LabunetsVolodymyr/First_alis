@@ -6,6 +6,7 @@
 #define ACTOR_H
 
 #include <string>
+#include <iostream>
 
 class Actor {
 private:
@@ -14,8 +15,8 @@ private:
 
 public:
     Actor();
-    Actor(std::string name, int age);
-    Actor(std::string name);
+    Actor(const std::string& name, int age);
+    Actor(const std::string& name);
     ~Actor();
 
     void showInfo() const;

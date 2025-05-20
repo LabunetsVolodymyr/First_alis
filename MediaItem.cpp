@@ -3,13 +3,15 @@
 //
 
 #include "MediaItem.h"
-#include <iostream>
 
-MediaItem::MediaItem() : title("Untitled"), releaseYear(2000) {}
-MediaItem::MediaItem(std::string t, int y) : title(t), releaseYear(y) {}
+MediaItem::MediaItem() : title("Unknown"), releaseYear(2000), imdbRating(0.0) {}
+
+MediaItem::MediaItem(const std::string& t, int y, double r) : title(t), releaseYear(y), imdbRating(r) {}
+
 MediaItem::~MediaItem() {
-    std::cout << "MediaItem \"" << title << "\" destroyed\n";
+    std::cout << "MediaItem \"" << title << "\" deleted\n";
 }
+
 void MediaItem::showInfo() const {
-    std::cout << "Media Title: " << title << ", Year: " << releaseYear << std::endl;
+    std::cout << "Title: " << title << ", Year: " << releaseYear << ", IMDb: " << imdbRating << std::endl;
 }

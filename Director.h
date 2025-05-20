@@ -6,6 +6,7 @@
 #define DIRECTOR_H
 
 #include <string>
+#include <iostream>
 
 class Director {
 private:
@@ -14,11 +15,12 @@ private:
 
 public:
     Director();
-    Director(std::string n, int exp);
-    Director(std::string n);
+    Director(const std::string& n, int exp);
+    Director(const std::string& n);
     ~Director();
 
     void showInfo() const;
 };
+
 
 #endif// DIRECTOR_H

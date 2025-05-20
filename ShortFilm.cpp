@@ -5,10 +5,19 @@
 #include "ShortFilm.h"
 #include <iostream>
 
-ShortFilm::ShortFilm(std::string t, int y, double r, std::shared_ptr<Director> d, std::vector<std::shared_ptr<Actor>> a, bool anim)
-    : Film(t, y, r, d, a), isAnimated(anim) {}
+ShortFilm::ShortFilm() :  festival("Unknown Festival") {}
+
+ShortFilm::ShortFilm(const std::string& t, int y, double r, const std::string& fest) : MediaItem(t, y, r), festival(fest) {}
+
+ShortFilm::~ShortFilm() {
+    std::cout << "ShortFilm \"" << title << "\" deleted\n";
+}
 
 void ShortFilm::showInfo() const {
-    Film::showInfo();
-    std::cout << "Type: " << (isAnimated ? "Animated" : "Live Action") << std::endl;
+    MediaItem::showInfo();
+    std::cout << "Festival: " << festival << std::endl;
+}
+
+std::string ShortFilm::getType() const {
+    return "Short Film";
 }
