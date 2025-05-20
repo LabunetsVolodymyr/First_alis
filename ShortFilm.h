@@ -21,5 +21,4 @@ public:
     std::string getType() const override;
 };
 
-
 #endif //SHORTFILM_H
