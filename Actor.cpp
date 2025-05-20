@@ -17,3 +17,4 @@ Actor::~Actor() {
 void Actor::showInfo() const {
     std::cout << "Actor: " << fullName << ", Age: " << age << std::endl;
 }
+
