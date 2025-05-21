@@ -8,8 +8,6 @@ include_directories(.)
 
 add_executable(new_target Director.cpp
         Director.h
-        Film.cpp
-        Film.h
         Actor.h
         Actor.cpp
         MediaItem.h
