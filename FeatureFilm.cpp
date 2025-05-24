@@ -3,22 +3,20 @@
 //
 
 #include "FeatureFilm.h"
-#include <iostream>
 
-FeatureFilm::FeatureFilm() : duration(90) {}
-
-FeatureFilm::FeatureFilm(const std::string& t, int y, double r, int d) : MediaItem(t, y, r), duration(d) {}
-
-FeatureFilm::~FeatureFilm() {
-    std::cout << "FeatureFilm \"" << title << "\" deleted\n";
-}
+FeatureFilm::FeatureFilm(std::string t, int y, double r) : Film(t, y, r) {}
 
 void FeatureFilm::showInfo() const {
-    MediaItem::showInfo();
-    std::cout << "Duration: " << duration << " minutes" << std::endl;
+    std::cout << "[Feature Film] ";
+    Film::showInfo();
 }
 
 std::string FeatureFilm::getType() const {
     return "Feature Film";
 }
+
+void FeatureFilm::play() const {
+    std::cout << "Playing full-length movie: " << title << std::endl;
+}
+
 
