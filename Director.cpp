@@ -5,10 +5,8 @@
 #include "Director.h"
 
 Director::Director() : name("Unnamed"), experience(0) {}
-
-Director::Director(const std::string& n, int exp) : name(n), experience(exp) {}
-
-Director::Director(const std::string& n) : Director(n, 5) {}
+Director::Director(std::string n, int exp) : name(n), experience(exp) {}
+Director::Director(std::string n) : Director(n, 5) {}
 
 Director::~Director() {
     std::cout << "Director \"" << name << "\" deleted\n";
@@ -17,4 +15,5 @@ Director::~Director() {
 void Director::showInfo() const {
     std::cout << "Director: " << name << ", Experience: " << experience << " years" << std::endl;
 }
+
 
