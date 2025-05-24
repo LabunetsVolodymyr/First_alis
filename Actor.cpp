@@ -20,4 +20,3 @@ void Actor::play() const {
     std::cout << "Actor " << fullName << " is performing a scene." << std::endl;
 }
 
-
