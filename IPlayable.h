@@ -6,7 +6,6 @@
 #define IPLAYABLE_H
 
 
-
 class IPlayable {
 public:
     virtual void play() const = 0;
