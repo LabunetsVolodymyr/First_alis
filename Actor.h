@@ -7,19 +7,21 @@
 
 #include <string>
 #include <iostream>
+#include "IPlayable.h"
 
-class Actor {
+class Actor : public IPlayable {
 private:
     std::string fullName;
     int age;
 
 public:
     Actor();
-    Actor(const std::string& name, int age);
-    Actor(const std::string& name);
+    Actor(std::string name, int age);
+    Actor(std::string name);
     ~Actor();
 
     void showInfo() const;
+    void play() const override;
 };
 
 
