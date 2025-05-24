@@ -19,4 +19,3 @@ void ShortFilm::play() const {
     std::cout << "Playing short film: " << title << std::endl;
 }
 
-
