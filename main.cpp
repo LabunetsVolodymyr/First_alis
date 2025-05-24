@@ -1,38 +1,42 @@
 #include <iostream>
 #include <vector>
-#include <memory>
-
-#include "MediaItem.h"
 #include "FeatureFilm.h"
 #include "ShortFilm.h"
 #include "Director.h"
 #include "Actor.h"
+#include "IPlayable.h"
+
+void showFilmType(const Film &film) {
+    std::cout << "Type: " << film.getType() << std::endl;
+    film.play();
+}
 
 int main() {
-    // Створимо директорів та акторів
+    FeatureFilm ff("Interstellar", 2014, 8.6);
+    ShortFilm sf("Piper", 2016, 8.4);
     Director director("Christopher Nolan", 20);
-    Actor actor1("Leonardo DiCaprio", 49);
-    Actor actor2("Joseph Gordon-Levitt", 39);
+    Actor actor("Leonardo DiCaprio", 49);
 
-    // Вектор вказівників на базовий клас — база даних фільмів
-    std::vector<std::unique_ptr<MediaItem>> films;
+    std::vector<Film*> films;
+    films.push_back(&ff);
+    films.push_back(&sf);
 
-    films.push_back(std::make_unique<FeatureFilm>("Inception", 2010, 8.8, 148));
-    films.push_back(std::make_unique<ShortFilm>("Doodlebug", 1997, 7.0, "Sundance"));
-
-    // Демонстрація динамічного поліморфізму
-    for (const auto& film : films) {
-        std::cout << "Type: " << film->getType() << std::endl;
-        film->showInfo();
-        std::cout << std::endl;
+    for (const auto *f : films) {
+        f->showInfo();
+        showFilmType(*f);
     }
 
-    // Покажемо інформацію про режисера і акторів
     director.showInfo();
-    actor1.showInfo();
-    actor2.showInfo();
+    actor.showInfo();
+
+    std::vector<IPlayable*> playables;
+    playables.push_back(&ff);
+    playables.push_back(&sf);
+    playables.push_back(&actor);
+
+    for (const auto* p : playables) {
+        p->play();
+    }
 
     return 0;
 }
-
-
