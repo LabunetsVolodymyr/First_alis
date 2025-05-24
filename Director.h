@@ -15,8 +15,8 @@ private:
 
 public:
     Director();
-    Director(const std::string& n, int exp);
-    Director(const std::string& n);
+    Director(std::string n, int exp);
+    Director(std::string n);
     ~Director();
 
     void showInfo() const;
