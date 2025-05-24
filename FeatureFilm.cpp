@@ -19,4 +19,3 @@ void FeatureFilm::play() const {
     std::cout << "Playing full-length movie: " << title << std::endl;
 }
 
-
