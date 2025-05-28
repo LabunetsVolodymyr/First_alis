@@ -13,6 +13,9 @@ public:
     void showInfo() const override final;
     std::string getType() const override;
     void play() const override;
+    void nonVirtualMethod() const{
+        std::cout << "FeatureFilm::nonVirtualMethod() called for \"" << title << "\"\n";
+    }
 };
 
 
