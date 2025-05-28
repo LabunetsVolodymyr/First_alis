@@ -24,6 +24,10 @@ public:
     virtual void showInfo() const;
     virtual std::string getType() const;
     virtual void play() const override = 0;
+
+    void nonVirtualMethod() const{
+        std::cout << "Film::nonVirtualMethod() called for \"" << title << "\"\n";
+    }
 };
 
 
